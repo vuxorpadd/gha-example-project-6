@@ -3,6 +3,8 @@ const exec = require('@actions/exec');
 
 function index() {
     core.notice('Hello from show-data-year-ago action!');
+
+    exec.exec('ls -la');
 }
 
 index();
