@@ -9,16 +9,13 @@ function index() {
 
     const oneYearAgo = calculateOneYearAgo();
 
-    core.setOutput('one-year-ago', oneYearAgo.toTimeString());
+    core.setOutput('one-year-ago', oneYearAgo.toISOString());
 }
 
 function calculateOneYearAgo() {
     const today = new Date();
-    const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
 
-    console.log(oneYearAgo.toTimeString());
-
-    return oneYearAgo;
+    return new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
 }
 
-index();
+calculateOneYearAgo();
