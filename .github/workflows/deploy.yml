@@ -73,8 +73,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Show date
+      - name: Get date
+        id: date
         uses: ./.github/actions/show-data-year-ago
         with:
           first-name: "Semen"
           last-name: "Dnipro"
+      - name: Show date 1 year ago
+        run: echo "Date 1 year ago was ${{ steps.date.outputs.one-year-ago }}"
