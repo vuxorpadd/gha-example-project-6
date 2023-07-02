@@ -1,5 +1,14 @@
 name: "Show date 1 year ago"
 description: "Show date 1 year ago"
+inputs:
+  first-name:
+    description: "First name"
+    required: true
+    default: "John"
+  last-name:
+    description: "Last name"
+    required: true
+    default: "Doe"
 runs:
   using: node16
   main: "index.js"
