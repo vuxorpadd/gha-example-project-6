@@ -1,20 +1,20 @@
 name: Cache dependencies
 runs:
   using: "composite"
-  inputs:
+  input:
     cache-on:
       description: "Whether to cache dependencies"
       required: false
       default: "true"
   steps:
     - name: Cache dependencies
-      if: ${{ inputs.cache-on == 'true' }}
+      if: ${{ input.cache-on == 'true' }}
       id: cache
       uses: actions/cache@v3
       with:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true' || inputs.cache-on == 'false'
+      if: steps.cache.outputs.cache-hit != 'true' || input.cache-on == 'false'
       run: npm ci
       shell: bash
