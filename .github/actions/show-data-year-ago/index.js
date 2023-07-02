@@ -7,9 +7,9 @@ function index() {
 
     exec.exec('ls -la');
 
-    const oneYearAgo = calculateOneYearAgo();
+    const oneYearAgo = calculateOneYearAgo()?.toISOString();
 
-    core.setOutput('one-year-ago', oneYearAgo.toISOString());
+    core.setOutput('one-year-ago', oneYearAgo);
 }
 
 function calculateOneYearAgo() {
@@ -18,4 +18,4 @@ function calculateOneYearAgo() {
     return new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
 }
 
-calculateOneYearAgo();
+index();
