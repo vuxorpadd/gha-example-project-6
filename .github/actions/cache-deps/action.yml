@@ -10,7 +10,7 @@ outputs:
     value: ${{ steps.cache.outputs.cache-hit }}
   cache-enabled:
     description: "Whether caching is enabled"
-    value: ${{ steps.install.output.cache-on }}
+    value: ${{ steps.install.outputs.cache-on }}
 runs:
   using: "composite"
   steps:
