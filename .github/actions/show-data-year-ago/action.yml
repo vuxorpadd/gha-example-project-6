@@ -2,4 +2,4 @@ name: "Show date 1 year ago"
 description: "Show date 1 year ago"
 runs:
   using: node16
-  main: "dist/index.js"
+  main: "index.js"
