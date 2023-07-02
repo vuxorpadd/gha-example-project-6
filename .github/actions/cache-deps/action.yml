@@ -4,6 +4,13 @@ inputs:
     description: "Whether to cache dependencies"
     required: false
     default: "true"
+outputs:
+  cache-hit:
+    description: "Whether the cache was hit"
+    value: ${{ steps.cache.outputs.cache-hit }}
+  cache-enabled:
+    description: "Whether caching is enabled"
+    value: ${{ steps.install.output.cache-on }}
 runs:
   using: "composite"
   steps:
@@ -24,5 +31,8 @@ runs:
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true' || inputs.cache-on == 'false'
-      run: npm ci
+      id: install
+      run: |
+        npm ci
+        echo "cache-on='${{ inputs.cache-on}}'" >> $GITHUB_OUTPUT
       shell: bash

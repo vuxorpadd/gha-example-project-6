@@ -11,8 +11,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Cache dependencies
         uses: ./.github/actions/cache-deps
+        id: cache
         with:
           cache-on: false
+      - name: Cache was on/off
+        run: echo "Cache status was ${{ steps.cache.outputs.cache-on }}"
       - name: Lint code
         run: npm run lint
   test:
