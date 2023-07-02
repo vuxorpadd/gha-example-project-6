@@ -16,6 +16,8 @@ function calculateOneYearAgo() {
     const today = new Date();
     const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
 
+    console.log(oneYearAgo.toTimeString());
+
     return oneYearAgo;
 }
 
