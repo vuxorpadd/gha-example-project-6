@@ -7,6 +7,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Cache dependencies disabled
+      if: inputs.cache-on == 'true'
+      run: echo "Caching is disabled"
+    - name: Cache dependencies enabled
+      if: inputs.cache-on == 'false'
+      run: echo "Caching is enabled"
     - name: Cache dependencies
       if: inputs.cache-on == 'true'
       id: cache
